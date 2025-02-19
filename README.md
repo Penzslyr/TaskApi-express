@@ -78,6 +78,8 @@ The server will run on `http://localhost:5000`.
 
 - **POST** `/tasks`: Create a new task (requires authentication).
 - **GET** `/tasks`: Retrieve all tasks for the authenticated user (requires authentication).
+- **PUT** `/tasks/:id`: Update an existing task by ID (requires authentication).
+- **DELETE** `/tasks/:id`: Delete an existing task by ID (requires authentication).
 
 ### Example Requests
 
@@ -104,6 +106,25 @@ curl -X POST http://localhost:5000/tasks \
 -H "Authorization: Bearer <your_jwt_token>" \
 -H "Content-Type: application/json" \
 -d '{"title": "New Task", "description": "Task description"}'
+```
+
+#### Update a Task
+
+```bash
+curl -X PUT http://localhost:5000/tasks/TASK_ID_HERE \
+-H "Authorization: Bearer <your_jwt_token>" \
+-H "Content-Type: application/json" \
+-d '{
+  "title": "Updated Task Title",
+  "description": "Updated Task Description"
+}'
+```
+
+#### Delete a Task
+
+```bash
+curl -X DELETE http://localhost:5000/tasks/TASK_ID_HERE \
+-H "Authorization: Bearer <your_jwt_token>"
 ```
 
 ### License
